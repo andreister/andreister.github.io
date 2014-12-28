@@ -1,14 +1,14 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-date:   2013-11-10 10:18:00
-categories: Thriller Comedy Horror
+date:   2014-12-29 00:50:00
+cover: 'http://whatatimeline.com/covers/1330597507de0/balloons-sunset-view-facebook-cover.jpg'
+categories: blogging
 ---
 
-You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
-To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.
+Testing Jekyll blogging here. Nice to see `monospaced` formatting! 
 
-Jekyll also offers powerful support for code snippets:
+Let's see how code snippets look like:
 
 {% highlight ruby %}
 def print_hi(name)
@@ -17,6 +17,14 @@ end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
+
+{% highlight csharp %}
+public static void Main() 
+{
+  Console.WriteLine("Oh well");
+}
+{% endhighlight %}
+
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
 

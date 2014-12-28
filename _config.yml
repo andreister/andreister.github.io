@@ -1,6 +1,6 @@
-name: Your New Jekyll Site
-description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+name: Codevanced
+description: Coding diary
+meta_description: "Codevanced, blogging about code"
 
 markdown: redcarpet
 highlighter: pygments
@@ -8,7 +8,7 @@ logo: false
 paginate: 15
 baseurl: /
 domain_name: 'http://yourblog-domain.com'
+url:            'blog url'	# Details for the RSS feed generator
 
-# Details for the RSS feed generator
-url:            'blog url'
-author:         'Your Name'
+author:         'Andrew Kazyrevich'
+authorbio:	'Put some bio here!'
