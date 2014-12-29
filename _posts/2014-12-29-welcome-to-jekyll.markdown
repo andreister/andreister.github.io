@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Hello Jekyll!"
 date:   2014-12-29 00:50:00
 cover: 'http://whatatimeline.com/covers/1330597507de0/balloons-sunset-view-facebook-cover.jpg'
 categories: blogging
@@ -25,8 +25,8 @@ public static void Main()
 }
 {% endhighlight %}
 
+And here's a gist
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
+{% gist 188955429c57efb57489 %}
 
-[jekyll-gh]: https://github.com/mojombo/jekyll
-[jekyll]:    http://jekyllrb.com
+Looks good, eh?

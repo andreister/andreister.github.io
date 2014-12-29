@@ -11,4 +11,4 @@ domain_name: 'http://yourblog-domain.com'
 url:            'blog url'	# Details for the RSS feed generator
 
 author:         'Andrew Kazyrevich'
-authorbio:	'Put some bio here!'
+authorbio:	'Andrew is a developer, architect and data analyst, currently working on finance projects using a mixture of C# and R'
