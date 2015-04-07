@@ -6,7 +6,7 @@ cover: 'http://whatatimeline.com/covers/1330597507de0/balloons-sunset-view-faceb
 categories: blogging
 ---
 
-Testing Jekyll blogging here. Nice to see `monospaced` formatting! 
+Testing Jekyll blogging here. Nice to see `monospaced` formatting! And look at this math $$\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}$$ unbelievable!!
 
 Let's see how code snippets look like:
 
