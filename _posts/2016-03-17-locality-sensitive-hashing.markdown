@@ -17,24 +17,26 @@ to compare each document to all others so complexity grows as $$\binom{n}{2}$$. 
 we resort to an estimation method - minhashing.
 
 The idea is that instead of comparing shingles across the documents directly, we generate a bunch 
-of random hash functions and then for each function calculate hashes for all shingles. But for 
-each function we keep only the minimum value out of all shingle hashes (hence the name of the method,
-minhashing). After the process is complete, we get _document signature_ - a vector of minhash values.
+of random hash functions and then for each function calculate hashes for all shingles. 
+
+But then for each function we keep only the minimum value out of all shingle hashes (hence the name 
+of the method, minhashing). After the process is complete, we get _document signature_ - a vector 
+of minhash values.
 
 Below is C# code illustrating the idea:
 
 {% highlight csharp %}
-public uint[] GetSignature(string text)
+public uint[] GetSignature(string text, List<Func<int, uint>> hashFunctions)
 {
-    var result = new uint[_hashFunctions.Count];
+    var result = new uint[hashFunctions.Count];
 
     var shingles = GetShingles(text);
     for (var shingleId = 0; shingleId < shingles.Count; shingleId++) {
         var minHash = uint.MaxValue;
         var shingleHash = shingles[shingleId].Hash;
-        for (var functionId = 0; functionId < _hashFunctions.Count; functionId++) {
-            var randomHash = _hashFunctions[functionId](shingleHash);
-            minHash = Math.Min(randomHash, minHash);
+        for (var functionId = 0; functionId < hashFunctions.Count; functionId++) {
+            var hash = hashFunctions[functionId](shingleHash);
+            minHash = Math.Min(hash, minHash);
             result[functionId] = minHash;
         }
     }
