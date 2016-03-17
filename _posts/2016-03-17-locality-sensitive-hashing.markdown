@@ -16,8 +16,11 @@ Obviously this approach won't work if documents count is high, because the algor
 to compare each document to all others so complexity grows as $$\binom{n}{2}$$. In this case 
 we resort to an estimation method - minhashing.
 
-The idea is that instead of comparing shingles directly, we generate a bunch of random hash 
-functions, and pass each shingle through those but keep only the minimum value per function. 
+The idea is that instead of comparing shingles across the documents directly, we generate a bunch 
+of random hash functions, and then for each function we calculate hashes for all shingles - but keep 
+only the minimum hash value. After the process is complete, we get a _document signature_ - a vector 
+of minhash values.
+
 Below is C# code illustrating the idea:
 
 {% highlight csharp %}
