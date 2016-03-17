@@ -2,8 +2,7 @@ name: Codevanced
 description: Coding diary
 meta_description: "Codevanced, blogging about code"
 
-markdown: redcarpet
-highlighter: pygments
+highlighter: rouge
 logo: false
 paginate: 15
 baseurl: /
