@@ -18,7 +18,7 @@ we resort to an estimation method - minhashing.
 
 The idea is that instead of comparing shingles across the documents directly, we generate a bunch 
 of random hash functions, and then for each function we calculate hashes for all shingles - but keep 
-only the minimum hash value. After the process is complete, we get a _document signature_ - a vector 
+only the minimum hash value. After the process is complete, we get _document signature_ - a vector 
 of minhash values.
 
 Below is C# code illustrating the idea:
@@ -29,7 +29,6 @@ public uint[] GetSignature(string text)
     var result = new uint[_hashFunctions.Count];
 
     var shingles = GetShingles(text);
-
     for (var shingleId = 0; shingleId < shingles.Count; shingleId++) {
         var minHash = uint.MaxValue;
         var shingleHash = shingles[shingleId].Hash;
