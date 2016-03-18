@@ -25,7 +25,7 @@ similarity of the two documents is
 
 $$JS(d_{1}, d_{2}) = \frac{A \cap B}{A \cup B}$$ 
 
-This approach won't scale if the number of documents count is high, because intersections and  
+This approach won't scale if the number of documents count is high, because intersections and 
 unions are expensive to calculate and the algorithm needs to compare each document to all others 
 so complexity grows as $$O(n^{2})$$. 
 
@@ -63,7 +63,7 @@ public uint[] GetSignature(string text, List<Func<Shingle, uint>> hashFunctions)
 One question remaining is the size of the reduced dimension: how many random hash functions should we 
 use? 
 
-It is possible to show, that expected error of Minhash algorithm is $$O(\frac{1}{\sqrt(k)})$$
+It is possible to show, that expected error of Minhash algorithm is $$O(\frac{1}{\sqrt{k}})$$
 and therefore ~400 hash functions would get us to a 5% error.
 
 #### Locality sensitive hashing
