@@ -16,7 +16,7 @@ Obviously this approach won't work if documents count is high, because the algor
 to compare each document to all others so complexity grows as $$\binom{n}{2}$$. In this case 
 we resort to an estimation method - minhashing.
 
-### Minhashing
+#### Minhashing
 
 The idea is that instead of comparing shingles across the documents directly, we generate a bunch 
 of random hash functions and then for each function calculate hashes for all shingles. 
@@ -46,7 +46,7 @@ public uint[] GetSignature(string text, List<Func<int, uint>> hashFunctions)
 }
 {% endhighlight %}
 
-### Locality sensitive hashing
+#### Locality sensitive hashing
 
 Once we have the signatures, we can compare them in $$\binom{n}{2}$$ fashion.
 
