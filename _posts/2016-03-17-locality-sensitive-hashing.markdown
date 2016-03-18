@@ -10,8 +10,8 @@ papers uploaded by the users.
 
 Given a large number of daily uploads, we need to automatically reject the documents which 
 are excessively similar to those we already have - but at the same time if the similarity 
-isn't too high we want to be able to recommend the document to users who previously purchased 
-or previewed similar papers.
+isn't too high we want instead to keep the document and recommend it to users who previously 
+purchased or previewed similar papers.
 
 This post is a brief outline of the similarity search algorithm we implemented. For full 
 implementation please check out [github](https://github.com/andreister/NAlgo/blob/master/NAlgo/Text/LocalitySensitiveSearch.cs)
@@ -25,16 +25,18 @@ similarity of the two documents is
 
 $$JS(d_{1}, d_{2}) = \frac{A \cap B}{A \cup B}$$ 
 
-This approach won't scale if the number of documents count is high, because the algorithm needs 
-to compare each document to all others so complexity grows as $$O(n^{2})$$. In this case 
-we resort to an estimation method - minhashing.
+This approach won't scale if the number of documents count is high, because intersections and  
+unions are expensive to calculate and the algorithm needs to compare each document to all others 
+so complexity grows as $$O(n^{2})$$. 
+
+In this case we resort to an estimation method - minhashing.
 
 #### Minhashing
 
 The idea is that instead of comparing shingles across the documents directly, we generate a bunch 
-of random hash functions and then for each function calculate hashes for all shingles. 
+of unique hash functions and then for each function calculate hashes for all shingles. 
 
-But then for each function we keep only the minimum value out of all shingle hashes (hence the name 
+But for each function we keep only the minimum value out of all shingle hashes (hence the name 
 of the method, minhashing). After the process is complete, we get _document signature_ - a vector 
 of minhash values.
 
@@ -58,6 +60,12 @@ public uint[] GetSignature(string text, List<Func<Shingle, uint>> hashFunctions)
 }
 {% endhighlight %}
 
+One question remaining is the size of the reduced dimension: how many random hash functions should we 
+use? 
+
+It is possible to show, that expected error of Minhash algorithm is $$O(\frac{1}{\sqrt(k)})$$
+and therefore ~400 hash functions would get us to a 5% error.
+
 #### Locality sensitive hashing
 
 Once we have the signatures, we can compare them in $$\binom{n}{2}$$ fashion:
@@ -75,9 +83,16 @@ public IEnumerable<DocumentSignature> GetSimilarDocuments(IEnumerable<DocumentSi
         }
         signature.Similarity = equal / total;
     }
-    return signatures.OrderBy(x => x.Similarity).Where(x => x.Similarity >= threshold);
+    return signatures.Where(x => x.Similarity >= threshold).OrderBy(x => x.Similarity);
 }
 {% endhighlight %}
+
+#### Conclusion
+
+Comparing the documents via Jaccard similarity is reasonably precise but slow - minhashing solves 
+the problem by reducing the dimensionality of the feature space, and provides quite accurate
+approximation of Jaccard similarity.
+
 
 
 
