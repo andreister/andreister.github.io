@@ -1,12 +1,12 @@
 name: Codevanced
-description: Coding diary
+description: A coding diary
 meta_description: "Codevanced, blogging about code"
 
 highlighter: rouge
 logo: false
 paginate: 15
 baseurl: /
-domain_name: 'http://yourblog-domain.com'
+domain_name: 'http://andreister.github.io'
 url:            'blog url'	# Details for the RSS feed generator
 
 author:         'Andrew Kazyrevich'
