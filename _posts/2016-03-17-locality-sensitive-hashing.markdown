@@ -13,8 +13,8 @@ are excessively similar to those we already have - but at the same time if the s
 isn't too high we want instead to keep the document and recommend it to users who previously 
 purchased or previewed similar papers.
 
-This post is a brief outline of the similarity search algorithm we implemented. For full 
-implementation please check out [github](https://github.com/andreister/NAlgo/blob/master/NAlgo/Text/LocalitySensitiveSearch.cs)
+This post is a brief outline of the similarity algorithm we implemented. For the full 
+implementation please check out [github](https://github.com/andreister/NAlgo/blob/master/NAlgo/Text/LocalitySensitiveSearch.cs).
 
 #### Jaccard similarity
 
@@ -47,8 +47,7 @@ public Signature GetSignature(string text, List<Func<Shingle, uint>> hashFunctio
 {
     var minhashVector = new uint[hashFunctions.Count];
 
-    var shingles = GetShingles(text);
-    foreach (var shingle in shingles) {
+    foreach (var shingle in GetShingles(text)) {
         var minHash = uint.MaxValue;
         for (var functionId = 0; functionId < hashFunctions.Count; functionId++) {
             var hash = hashFunctions[functionId](shingle);
