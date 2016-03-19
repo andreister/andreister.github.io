@@ -43,9 +43,9 @@ of minhash values.
 C# code below illustrates the idea:
 
 {% highlight csharp %}
-public uint[] GetSignature(string text, List<Func<Shingle, uint>> hashFunctions)
+public Signature GetSignature(string text, List<Func<Shingle, uint>> hashFunctions)
 {
-    var result = new uint[hashFunctions.Count];
+    var minhashVector = new uint[hashFunctions.Count];
 
     var shingles = GetShingles(text);
     foreach (var shingle in shingles) {
@@ -53,10 +53,10 @@ public uint[] GetSignature(string text, List<Func<Shingle, uint>> hashFunctions)
         for (var functionId = 0; functionId < hashFunctions.Count; functionId++) {
             var hash = hashFunctions[functionId](shingle);
             minHash = Math.Min(hash, minHash);
-            result[functionId] = minHash;
+            minhashVector[functionId] = minHash;
         }
     }
-    return result;
+    return new Signature(minhashVector);
 }
 {% endhighlight %}
 
@@ -71,7 +71,7 @@ and therefore ~400 hash functions would get us to a 5% error.
 Once we have the signatures, we can compare them in $$\binom{n}{2}$$ fashion:
 
 {% highlight csharp %}
-public IEnumerable<DocumentSignature> GetSimilarDocuments(IEnumerable<DocumentSignature> signatures, decimal threshold)
+public IEnumerable<Signature> GetSimilarDocuments(IEnumerable<Signature> signatures, decimal threshold)
 {
     foreach (var signature in signatures) {
         var equal = 0.0m;
