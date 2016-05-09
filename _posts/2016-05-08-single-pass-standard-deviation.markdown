@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Single pass standard deviation"
-date:   2016-05-09 21:50:00
+date:   2016-05-08 21:50:00
 categories: statistics, C#
 ---
 
