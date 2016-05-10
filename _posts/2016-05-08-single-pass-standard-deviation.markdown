@@ -31,7 +31,7 @@ $$SD = \sqrt(\frac{1}{n-1} (\sum_{i=1}^{n}{x^{2}_{i}} - n\bar{x}^{2})$$
 
 #### Implementation
 
-(put gist here)
+<script src="https://gist.github.com/andreister/552d0bff6aaf5729219693b242768310.js"></script>
 
 #### Conclusion
 
